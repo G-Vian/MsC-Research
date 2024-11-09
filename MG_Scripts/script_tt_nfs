@@ -1,0 +1,41 @@
+# Script for Madgraph
+# Generates the process, outputs to a folder, and...
+#
+# model to be used:
+import model sm
+
+# process(es) to be generated
+generate p p > t t~ 
+
+# foldername for the process
+output tt_nfs -f
+
+# launch event generation (aparently, the default is the last dir outputed)
+launch
+
+# answering questions after launch:
+# Q: The following switches determine which programs are run:
+# Q: [...]
+# Q: Type '0', 'auto', 'done' or just press enter when you are done.[60s to answer]
+shower=OFF 		# Showering can be "shower=OFF" or "shower=Pythia8"
+detector=OFF		# Detector can be "detector=OFF" or "detector=Delphes"
+analysis=MadAnalysis5
+
+# Q: Do you want to edit a card (press enter to bypass editing)?
+# Q: /------------------------------------------------------------\
+# Q: |  1. param : param_card.dat                                 |
+# Q: |  2. run   : run_card.dat                                   |
+# Q: \------------------------------------------------------------/
+# Q:  you can also
+# Q:    - enter the path to a valid card or banner.
+# Q:    - use the 'set' command to modify a parameter directly.
+# Q:      The set option works only for param_card and run_card.
+# Q:      Type 'help set' for more information on this command.
+# Q:    - call an external program (ASperGE/MadWidth/...).
+# Q:      Type 'help' for the list of available command
+# Q:  [0, done, 1, param, 2, run, enter path][90s to answer] 
+set nevents 10000
+set ebeam1 6500.0
+set ebeam2 6500.0
+set sde_strategy 2
+set use_syst False
